@@ -22,6 +22,6 @@ node {
 
     stage('Results') {
         // junit 'JAVA/Spring/MVCProjectJava/target/surefire-reports/TEST-*.xml'
-        archiveArtifacts artifacts: 'JAVA/Spring/MVCProjectJava/target/*.war', fingerprint: true
+        archiveArtifacts artifacts: 'Spring/MVCProjectJava/target/*.war', fingerprint: true
     }
 }
