@@ -1,0 +1,11 @@
+package kr.co.softsoldesk.config;
+
+
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+@MapperScan("kr.co.softsoldesk.mapper")
+public class MyBatisConfig {
+
+}

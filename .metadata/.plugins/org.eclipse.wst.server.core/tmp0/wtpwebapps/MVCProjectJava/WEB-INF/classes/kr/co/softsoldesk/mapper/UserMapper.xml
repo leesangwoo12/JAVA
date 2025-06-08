@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.softsoldesk.mapper.UserMapper">
+
+	<select id="isUserIdAvailable" parameterType="string"
+		resultType="string">
+		select user_name
+		from user_table
+		where user_id = #{user_id}
+	</select>
+
+	<insert id="addUserInfo"
+		parameterType="kr.co.softsoldesk.beans.UserBean">
+		insert into user_table (user_name, user_id, user_pw)
+		values (#{user_name}, #{user_id}, #{user_pw})
+	</insert>
+
+	<select id="getLoginUserInfo" parameterType="kr.co.softsoldesk.beans.UserBean" resultType="kr.co.softsoldesk.beans.UserBean">
+		select user_idx, user_name
+		from user_table
+		where user_id = #{user_id}
+		and user_pw = #{user_pw}
+	</select>
+
+	<!-- 회원 정보 조회 (수정 전 정보 불러오기) -->
+	<select id="getModifyUserInfo" parameterType="int" resultType="kr.co.softsoldesk.beans.UserBean">
+		select user_id, user_name
+		from user_table
+		where user_idx = #{user_idx}
+	</select>
+
+	<!-- 회원 정보 수정 -->
+	<update id="modifyUserInfo" parameterType="kr.co.softsoldesk.beans.UserBean">
+		update user_table
+		set user_pw = #{user_pw}
+		where user_idx = #{user_idx}
+	</update>
+
+
+
+</mapper>
