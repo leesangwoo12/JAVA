@@ -19,7 +19,7 @@ node('master') {
         }
         steps {
             bat '''
-            copy JAVA\\Spring\\MVCProjectJava\\target\\*.war "C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\webapps\\bbs.war" /Y
+            copy JAVA\\Spring\\MVCProjectJava\\target\\*.war "C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\webapps\\bbs2.war" /Y
             '''
         }
     }
