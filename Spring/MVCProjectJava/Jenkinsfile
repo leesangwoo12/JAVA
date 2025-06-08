@@ -14,9 +14,10 @@ node {
     }
     stage('Deploy to Tomcat') {
         if (!isUnix()) {
-        bat '''
-        copy Spring\\MVCProjectJava\\target\\*.war "C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\webapps\\bbs2.war" /Y
-        '''
+        bat 'copy Spring\\MVCProjectJava\\target\\MVCProjectJava-0.0.1-SNAPSHOT.war "C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\webapps\\bbs2.war" /Y'
+        bat '"C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\bin\\shutdown.bat"'
+        bat 'timeout /t 5 /nobreak'
+        bat '"C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\bin\\startup.bat"'
     }
     }
 
