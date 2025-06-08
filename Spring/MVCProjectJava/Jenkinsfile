@@ -6,7 +6,7 @@ node {
             if (isUnix()) {
                 sh 'mvn -Dmaven.test.failure.ignore clean package'
             } else {
-                bat 'cd JAVA\\Spring\\MVCProjectJava && mvn -Dmaven.test.failure.ignore clean package'
+                bat 'mvn -Dmaven.test.failure.ignore clean package'
             }
         }
     }
@@ -19,7 +19,7 @@ node {
         }
         steps {
             bat '''
-            copy JAVA\\Spring\\MVCProjectJava\\target\\*.war "C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\webapps\\bbs2.war" /Y
+            copy target\\*.war "C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\webapps\\bbs2.war" /Y
             '''
         }
     }
