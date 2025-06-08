@@ -1,17 +1,31 @@
-node ('master') {
-checkout scm
-stage('Build') {
-withMaven(maven: 'maven') {
-if (isUnix()) {
-sh 'mvn -Dmaven.test.failure.ignore clean package'
-}
-else {
-bat 'mvn -Dmaven.test.failure.ignore clean package'
-}
-}
-stage('Results') {
-junit '**/target/surefire-reports/TEST-*.xml'
-archive 'target/*.jar'
-}
-}
+node('master') {
+    checkout scm
+
+    stage('Build') {
+        withMaven(maven: 'maven') {
+            if (isUnix()) {
+                sh 'mvn -Dmaven.test.failure.ignore clean package'
+            } else {
+                bat 'cd JAVA\\Spring\\MVCProjectJava && mvn -Dmaven.test.failure.ignore clean package'
+            }
+        }
+    }
+
+    stage('Deploy to Tomcat') {
+        when {
+            not {
+                expression { isUnix() }
+            }
+        }
+        steps {
+            bat '''
+            copy JAVA\\Spring\\MVCProjectJava\\target\\*.war "C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\webapps\\bbs.war" /Y
+            '''
+        }
+    }
+
+    stage('Results') {
+        junit 'JAVA/Spring/MVCProjectJava/target/surefire-reports/TEST-*.xml'
+        archiveArtifacts artifacts: 'JAVA/Spring/MVCProjectJava/target/*.war', fingerprint: true
+    }
 }
