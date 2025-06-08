@@ -13,16 +13,11 @@ node {
     }
     }
     stage('Deploy to Tomcat') {
-        when {
-            not {
-                expression { isUnix() }
-            }
-        }
-        steps {
-            bat '''
-            copy Spring\\MVCProjectJava\\target\\*.war "C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\webapps\\bbs2.war" /Y
-            '''
-        }
+        if (!isUnix()) {
+        bat '''
+        copy Spring\\MVCProjectJava\\target\\*.war "C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\webapps\\bbs2.war" /Y
+        '''
+    }
     }
 
     stage('Results') {
