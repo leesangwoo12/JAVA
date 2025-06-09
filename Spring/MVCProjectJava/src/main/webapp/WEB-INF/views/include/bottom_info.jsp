@@ -11,7 +11,7 @@
 	<div class="container">
 		<p>http://www.softSoldesk.co.kr</p>
 		<p>게시판 예제</p>
-		<p>사업자번호 : 111-555-999</p>
+		<p>사업자번호 : 111-555-777</p>
 	</div>
 </div>
 </body>
