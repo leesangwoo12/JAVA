@@ -27,11 +27,11 @@ node {
     }
 
     stage('Copy Uploaded Images') {
-    steps {
+   
         bat '''
         copy C:\\JAVA\\Spring\\MVCProjectJava\\src\\main\\webapp\\resources\\upload\\*.* "C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\webapps\\BBS2\\resources\\upload\\" /Y
         '''
-    }
+    
 }
 
     stage('Results') {
