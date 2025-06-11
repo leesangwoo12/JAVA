@@ -44,7 +44,7 @@
 					<c:if test="${readContentBean.content_file != null}">
 					<div class="form-group">
 						<label for="board_file">첨부 이미지</label>
-						<img src="C:/JAVA/Spring/MVCProjectJava/src/main/webapp/resources/upload/${readContentBean.content_file}" width="100%"/>						
+						<img src="${root}resources/upload/${readContentBean.content_file}" width="100%"/>						
 					</div>
 					</c:if>
 					<div class="form-group">
