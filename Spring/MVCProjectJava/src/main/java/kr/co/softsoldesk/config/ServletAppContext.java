@@ -76,7 +76,7 @@ public class ServletAppContext implements WebMvcConfigurer {
 
 		WebMvcConfigurer.super.addResourceHandlers(registry);
 		//모든 하위 경로에 파일들 resources타고 오게 설정
-		registry.addResourceHandler("/resources/upload/**").addResourceLocations("file:///D:/resources/uploadFiles/");
+		registry.addResourceHandler("/resources/upload/**").addResourceLocations("file:///D:/resources/upload/");
 	}
 	
 	  
