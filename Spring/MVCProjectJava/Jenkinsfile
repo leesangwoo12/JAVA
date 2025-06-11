@@ -31,7 +31,7 @@ node {
         bat '''
     mkdir "C:\\Apache Software Foundation\\Tomcat 9.0\\webapps\\BBS2\\resources\\upload"
     IF EXIST "C:\\JAVA\\Spring\\MVCProjectJava\\src\\main\\webapp\\resources\\upload\\*.*" (
-        copy C:\\JAVA\\Spring\\MVCProjectJava\\src\\main\\webapp\\resources\\upload\\*.* "C:\\Apache Software Foundation\\Tomcat 9.0\\webapps\\BBS2\\resources\\upload\\" /Y
+        copy C:\\JAVA\\Spring\\MVCProjectJava\\src\\main\\webapp\\resources\\upload\\*.* "D:\\resources\\upload\\" /Y
     ) ELSE (
         echo "No uploaded images to copy."
     )
